@@ -1,0 +1,22 @@
+name: Sync gradle.yml
+
+on: push
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes gradle.yml
+      uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_DEMO }}
+      with:
+        source_file: 'gradle.yml'
+        destination_repo: 'AlexandruGodri/java-demo-2'
+        destination_folder: '.github/workflows'
+        user_email: 'alexandru.godri@cloud.ionos.com'
+        user_name: 'AlexandruGodri'
+        commit_message: 'Updated java to version 11'
