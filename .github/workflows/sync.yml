@@ -3,7 +3,24 @@ name: Sync gradle.yml
 on: push
 
 jobs:
-  copy-file:
+  java-demo-1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes gradle.yml
+      uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_DEMO }}
+      with:
+        source_file: 'gradle.yml'
+        destination_repo: 'AlexandruGodri/java-demo-1'
+        destination_folder: '.github/workflows'
+        user_email: 'alexandru.godri@cloud.ionos.com'
+        user_name: 'AlexandruGodri'
+        destination_branch: 'main'
+  java-demo-2:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
