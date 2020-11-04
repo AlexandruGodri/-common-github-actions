@@ -19,4 +19,4 @@ jobs:
         destination_folder: '.github/workflows'
         user_email: 'alexandru.godri@cloud.ionos.com'
         user_name: 'AlexandruGodri'
-        commit_message: 'Updated java to version 11'
+        destination_branch: 'main'
