@@ -1,4 +1,4 @@
-name: Sync gradle.yml
+name: Sync java workflows
 
 on: push
 
@@ -9,12 +9,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Pushes gradle.yml
+    - name: Push java 8 template to java-demo-1
       uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_DEMO }}
       with:
-        source_file: 'gradle.yml'
+        source_file: 'java8-gradle.yml'
         destination_repo: 'AlexandruGodri/java-demo-1'
         destination_folder: '.github/workflows'
         user_email: 'alexandru.godri@cloud.ionos.com'
@@ -26,13 +26,30 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Pushes gradle.yml
+    - name: Push java 11 template to java-demo-2
       uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_DEMO }}
       with:
-        source_file: 'gradle.yml'
+        source_file: 'java11-gradle.yml'
         destination_repo: 'AlexandruGodri/java-demo-2'
+        destination_folder: '.github/workflows'
+        user_email: 'alexandru.godri@cloud.ionos.com'
+        user_name: 'AlexandruGodri'
+        destination_branch: 'main'
+  java-demo-3:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Push java 15 template to java-demo-3
+      uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_DEMO }}
+      with:
+        source_file: 'java15-gradle.yml'
+        destination_repo: 'AlexandruGodri/java-demo-3'
         destination_folder: '.github/workflows'
         user_email: 'alexandru.godri@cloud.ionos.com'
         user_name: 'AlexandruGodri'
